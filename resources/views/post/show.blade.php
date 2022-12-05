@@ -9,6 +9,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <p class="d-flex align-items-center" style="gap: 10px;">ID: <span class="badge bg-secondary d-flex align-items-center justify-content-center">{{ $post->id }}</span></p>
+                        <div class="d-flex align-items-center">Category: <span class="fw-bold ms-1">{{$post->category->title}}</span></div>
                         <p class="card-text">{{ $post->content }}</p>
                         <p class="card-text"><small class="text-muted">{{ $post->created_at->format('d.m.Y') }}</small></p>
 
@@ -16,7 +17,7 @@
                 </div>
             </div>
         </div>
-     <div class="d-flex align-items-center" style="gap: 10px">https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80
+     <div class="d-flex align-items-center" style="gap: 10px">
          <div class="">
              <a  class="btn btn-success" href="{{ route('post.edit', $post->id) }}">Edit</a>
          </div>

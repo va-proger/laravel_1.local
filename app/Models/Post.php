@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'content', 'image', 'likes', 'isPublished'];
+    protected $guarded = false;
 
     public function category()
     {
