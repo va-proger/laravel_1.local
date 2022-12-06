@@ -32,4 +32,7 @@
             </div>
         </div>
     @endforeach
+    <div class="">
+        {{ $posts->withQueryString()->links() }}
+    </div>
 @endsection
