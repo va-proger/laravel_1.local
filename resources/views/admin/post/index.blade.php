@@ -3,9 +3,7 @@
 
 @section('content')
     <div class="">
-        <div class="mb-2">
-            <a class="btn btn-success" href="{{ route('post.create') }}">Add Post</a>
-        </div>
+
         @foreach($posts as $post)
 
             <div class="card mb-3" >
@@ -15,6 +13,21 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-end" style="gap: 10px">
+                                <div class="">
+                                    <a  class="btn btn-success" href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
+                                </div>
+                                <div class="me-auto">
+                                    <form action="{{ route('admin.post.delete', $post->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+
+                                </div>
+
+
+                            </div>
                             <h5 class="card-title d-flex align-items-center justify-content-between">{{ $post->title }}  <span class=" badge bg-secondary ">ID: {{ $post->id }}</span></h5>
                             <p class="card-text">{{ $post->content }}</p>
                             <div class="d-flex align-items-center">Category: <span class="fw-bold ms-1">{{$post->category->title}}</span></div>
@@ -28,7 +41,7 @@
                             </div>
 
                             <p class="card-text"><small class="text-muted">{{ $post->created_at->format('d.m.Y') }}</small></p>
-                            <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary mt-auto">More</a>
+                            <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-primary mt-auto">More</a>
                         </div>
                     </div>
                 </div>

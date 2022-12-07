@@ -1,9 +1,11 @@
 @extends('layouts.main')
 @section('content')
     <h1>This is posts page</h1>
+    @can('view', auth()->user())
     <div class="mb-2">
         <a class="btn btn-success" href="{{ route('post.create') }}">Add Post</a>
     </div>
+    @endcan
     @foreach($posts as $post)
 
         <div class="card mb-3" >

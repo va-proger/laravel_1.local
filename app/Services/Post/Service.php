@@ -8,9 +8,9 @@ class Service
 {
     public function store($data)
     {
+
         $tags = $data['tags'];
         unset($data['tags']);
-
         $post = Post::create($data);
         $post->tags()->attach($tags);
     }

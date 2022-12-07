@@ -37,9 +37,16 @@ Route::group(['namespace'=>'App\Http\Controllers\Post'], function(){
     Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
     Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 });
-Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function (){
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('admin')->group(function (){
     Route::namespace('Post')->group( function (){
-        Route::get('/post', 'IndexController')->name('admin.post.index');
+        Route::get('/posts', 'IndexController')->name('admin.post.index');
+        Route::get('/posts/create', 'CreateController')->name('admin.post.create');
+        Route::post('/posts', 'StoreController')->name('admin.post.store');
+
+        Route::get('/posts/{post}', 'ShowController')->name('admin.post.show');
+        Route::get('/posts/{post}/edit', 'EditController')->name('admin.post.edit');
+        Route::patch('/posts/{post}', 'UpdateController')->name('admin.post.update');
+        Route::delete('/posts/{post}', 'DestroyController')->name('admin.post.delete');
     });
 });
 //Route::get('/posts/update', [PostController::class, 'update']);
@@ -52,3 +59,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function 
 
 Route::get('/contacts', [ContactPostController::class, 'index'])->name('contact.index');
 Route::get('/about', [AboutPostController::class, 'index'])->name('about.index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

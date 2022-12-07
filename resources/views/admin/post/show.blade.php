@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
         <h1>Detail post:  {{  $post->title }} </h1>
         <div class="card mb-3" >
@@ -18,21 +18,19 @@
             </div>
         </div>
      <div class="d-flex align-items-center" style="gap: 10px">
-         @can('view', auth()->user())
          <div class="">
-             <a  class="btn btn-success" href="{{ route('post.edit', $post->id) }}">Edit</a>
+             <a  class="btn btn-success" href="{{ route('admin.post.edit', $post->id) }}">Edit</a>
          </div>
          <div class="me-auto">
-             <form action="{{ route('post.delete', $post->id) }}" method="post">
+             <form action="{{ route('admin.post.delete', $post->id) }}" method="post">
                  @csrf
                  @method('delete')
                  <button type="submit" class="btn btn-danger">Delete</button>
              </form>
 
          </div>
-         @endcan
          <div class="">
-             <a class="btn btn-dark" href="{{ route('post.index') }}">Back</a>
+             <a class="btn btn-dark" href="{{ route('admin.post.index') }}">Back</a>
          </div>
 
      </div>
