@@ -2,16 +2,6 @@
 
 use App\Http\Controllers\AboutPostController;
 use App\Http\Controllers\ContactPostController;
-use App\Http\Controllers\MainPostController;
-use App\Http\Controllers\MyPLaceController;
-use App\Http\Controllers\Post\CreateController;
-use App\Http\Controllers\Post\DestroyController;
-use App\Http\Controllers\Post\EditController;
-use App\Http\Controllers\Post\IndexController;
-use App\Http\Controllers\Post\ShowController;
-use App\Http\Controllers\Post\StoreController;
-use App\Http\Controllers\Post\UpdateController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*

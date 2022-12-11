@@ -21,14 +21,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group([
 
     'middleware' => 'api',
-//    'namespace' => 'App\Http\Controllers',
     'prefix' => 'auth'
-
 ], function ($router) {
-
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me',  [AuthController::class, 'me']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
+Route::group([
+    'middleware' => 'jwt.auth',
+    'namespace' => 'App\Http\Controllers\Post'
+], function ( ) {
+    Route::get('/posts', 'IndexController' );
+    Route::get('/posts/create', 'CreateController');
+    Route::post('/posts', 'StoreController');
+    Route::get('/posts/{post}', 'ShowController');
+    Route::get('/posts/{post}/edit', 'EditController');
+    Route::patch('/posts/{post}', 'UpdateController');
+    Route::delete('/posts/{post}', 'DestroyController');
 
 });
