@@ -28,8 +28,9 @@ class StoreRequest extends FormRequest
             'content' => 'bail|required|string',
             'image' => 'bail|required|string|max:255',
             'likes' => '',
-            'category_id' => '',
+            'category' => '',
             'tags' => '',
+            'tags.*.title' => '',
         ];
     }
 }
